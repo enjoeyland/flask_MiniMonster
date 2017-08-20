@@ -1,0 +1,797 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <!--[if IE]>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <![endif]-->
+  <title>xCharts » Examples</title>
+  
+ 
+ 
+
+ 
+
+<link rel="stylesheet" href="../vendors/xcharts/master.css">
+<link rel="stylesheet" href="../vendors/xcharts/xcharts.min.css">
+
+
+
+
+  <style>
+  .xchart .errorLine path {
+    stroke: #C6080D;
+    stroke-width: 3px;
+  }
+  </style>
+
+ 
+<!-- <script src="../vendors/d3/d3.min.js"></script> -->
+<script src="../vendors/xcharts/extra/d3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="../vendors/xcharts/xcharts.min.js"></script>
+<!-- <script src="../vendors/xcharts/extra/xcharts.min.js"></script> -->
+<script src="../vendors/xcharts/rainbow.min.js"></script>
+
+</head>
+<body class="">
+
+  
+
+<header class="mainHeader">
+  <hgroup class="logo">
+    <h1 class="xChartLogo"><a href="/xcharts/">xCharts</a></h1>
+    <h2 class="tenxerLogo"><a href="https://www.tenxer.com"><img src="/xcharts/images/logo.png" alt="Open Source Charts by tenXer"></a></h2>
+    <h3>a D3-based library for building custom charts and graphs</h3>
+  </hgroup>
+
+  <nav data-version="v0.3.0">
+    <ul>
+      <li>
+        <a href="/xcharts/">download</a>
+      </li>
+      <li class="current">
+        <a href="/xcharts/examples/">examples</a>
+      </li>
+      <li>
+        <a href="/xcharts/docs/">documentation</a>
+      </li>
+      <li><a target="_blank" href="https://github.com/tenXer/xcharts/">source</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<section>
+  <h1>Examples</h1>
+
+  
+  <article class="example">
+    <h1>Your Basic Bar Chart</h1>
+    <p></p>
+    <div class="row guttered">
+      <div class="span5">
+        <figure id="example1"></figure>
+      </div>
+      <div class="span7">
+        <pre><code data-language="javascript">var data = {
+  &quot;xScale&quot;: &quot;ordinal&quot;,
+  &quot;yScale&quot;: &quot;linear&quot;,
+  &quot;main&quot;: [
+    {
+      &quot;className&quot;: &quot;.pizza&quot;,
+      &quot;data&quot;: [
+        {
+          &quot;x&quot;: &quot;Pepperoni&quot;,
+          &quot;y&quot;: 4
+        },
+        {
+          &quot;x&quot;: &quot;Cheese&quot;,
+          &quot;y&quot;: 8
+        }
+      ]
+    }
+  ]
+};
+var myChart = new xChart('bar', data, '#example1');</code></pre>
+      </div>
+    </div>
+    <script>
+    (function () {
+      
+      var data = {
+  "xScale": "ordinal",
+  "yScale": "linear",
+  "main": [
+    {
+      "className": ".pizza",
+      "data": [
+        {
+          "x": "Pepperoni",
+          "y": 4
+        },
+        {
+          "x": "Cheese",
+          "y": 8
+        }
+      ]
+    }
+  ]
+};
+      var myChart = new xChart('bar', data, '#example1');
+      
+    }());
+    </script>
+  </article>
+
+  <hr>
+  
+  <article class="example">
+    <h1>Multi-Series Bar Chart</h1>
+    <p></p>
+    <div class="row guttered">
+      <div class="span5">
+        <figure id="example2"></figure>
+      </div>
+      <div class="span7">
+        <pre><code data-language="javascript">var data = {
+  &quot;xScale&quot;: &quot;ordinal&quot;,
+  &quot;yScale&quot;: &quot;linear&quot;,
+  &quot;main&quot;: [
+    {
+      &quot;className&quot;: &quot;.pizza&quot;,
+      &quot;data&quot;: [
+        {
+          &quot;x&quot;: &quot;Pepperoni&quot;,
+          &quot;y&quot;: 4
+        },
+        {
+          &quot;x&quot;: &quot;Cheese&quot;,
+          &quot;y&quot;: 8
+        }
+      ]
+    },
+    {
+      &quot;className&quot;: &quot;.pizza&quot;,
+      &quot;data&quot;: [
+        {
+          &quot;x&quot;: &quot;Pepperoni&quot;,
+          &quot;y&quot;: 6
+        },
+        {
+          &quot;x&quot;: &quot;Cheese&quot;,
+          &quot;y&quot;: 5
+        }
+      ]
+    }
+  ]
+};
+var myChart = new xChart('bar', data, '#example2');</code></pre>
+      </div>
+    </div>
+    <script>
+    (function () {
+      
+      var data = {
+  "xScale": "ordinal",
+  "yScale": "linear",
+  "main": [
+    {
+      "className": ".pizza",
+      "data": [
+        {
+          "x": "Pepperoni",
+          "y": 4
+        },
+        {
+          "x": "Cheese",
+          "y": 8
+        }
+      ]
+    },
+    {
+      "className": ".pizza",
+      "data": [
+        {
+          "x": "Pepperoni",
+          "y": 6
+        },
+        {
+          "x": "Cheese",
+          "y": 5
+        }
+      ]
+    }
+  ]
+};
+      var myChart = new xChart('bar', data, '#example2');
+      
+    }());
+    </script>
+  </article>
+
+  <hr>
+  
+  <article class="example">
+    <h1>Time-Series Line</h1>
+    <p></p>
+    <div class="row guttered">
+      <div class="span5">
+        <figure id="example3"></figure>
+      </div>
+      <div class="span7">
+        <pre><code data-language="javascript">var data = {
+  &quot;xScale&quot;: &quot;time&quot;,
+  &quot;yScale&quot;: &quot;linear&quot;,
+  &quot;type&quot;: &quot;line&quot;,
+  &quot;main&quot;: [
+    {
+      &quot;className&quot;: &quot;.pizza&quot;,
+      &quot;data&quot;: [
+        {
+          &quot;x&quot;: &quot;2012-11-05&quot;,
+          &quot;y&quot;: 1
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-06&quot;,
+          &quot;y&quot;: 6
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-07&quot;,
+          &quot;y&quot;: 13
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-08&quot;,
+          &quot;y&quot;: -3
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-09&quot;,
+          &quot;y&quot;: -4
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-10&quot;,
+          &quot;y&quot;: 9
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-11&quot;,
+          &quot;y&quot;: 6
+        }
+      ]
+    }
+  ]
+};
+var opts = {
+  "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+  "tickFormatX": function (x) { return d3.time.format('%A')(x); }
+};
+var myChart = new xChart('line', data, '#example3', opts);</code></pre>
+      </div>
+    </div>
+    <script>
+    (function () {
+      
+      var data = {
+  "xScale": "time",
+  "yScale": "linear",
+  "type": "line",
+  "main": [
+    {
+      "className": ".pizza",
+      "data": [
+        {
+          "x": "2012-11-05",
+          "y": 1
+        },
+        {
+          "x": "2012-11-06",
+          "y": 6
+        },
+        {
+          "x": "2012-11-07",
+          "y": 13
+        },
+        {
+          "x": "2012-11-08",
+          "y": -3
+        },
+        {
+          "x": "2012-11-09",
+          "y": -4
+        },
+        {
+          "x": "2012-11-10",
+          "y": 9
+        },
+        {
+          "x": "2012-11-11",
+          "y": 6
+        }
+      ]
+    }
+  ]
+};
+      var opts = {
+  "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+  "tickFormatX": function (x) { return d3.time.format('%A')(x); }
+};
+      
+      var myChart = new xChart('line', data, '#example3', opts);
+      
+    }());
+    </script>
+  </article>
+
+  <hr>
+  
+  <article class="example">
+    <h1>Interacting With Points</h1>
+    <p>Mouse over the points on the chart to see tooltips.</p>
+    <div class="row guttered">
+      <div class="span5">
+        <figure id="example4"></figure>
+      </div>
+      <div class="span7">
+        <pre><code data-language="javascript">var tt = document.createElement(&#39;div&#39;),
+  leftOffset = -(~~$(&#39;html&#39;).css(&#39;padding-left&#39;).replace(&#39;px&#39;, &#39;&#39;) + ~~$(&#39;body&#39;).css(&#39;margin-left&#39;).replace(&#39;px&#39;, &#39;&#39;)),
+  topOffset = -32;
+tt.className = &#39;ex-tooltip&#39;;
+document.body.appendChild(tt);
+
+var data = {
+  &quot;xScale&quot;: &quot;time&quot;,
+  &quot;yScale&quot;: &quot;linear&quot;,
+  &quot;main&quot;: [
+    {
+      &quot;className&quot;: &quot;.pizza&quot;,
+      &quot;data&quot;: [
+        {
+          &quot;x&quot;: &quot;2012-11-05&quot;,
+          &quot;y&quot;: 6
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-06&quot;,
+          &quot;y&quot;: 6
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-07&quot;,
+          &quot;y&quot;: 8
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-08&quot;,
+          &quot;y&quot;: 3
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-09&quot;,
+          &quot;y&quot;: 4
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-10&quot;,
+          &quot;y&quot;: 9
+        },
+        {
+          &quot;x&quot;: &quot;2012-11-11&quot;,
+          &quot;y&quot;: 6
+        }
+      ]
+    }
+  ]
+};
+var opts = {
+  "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+  "tickFormatX": function (x) { return d3.time.format('%A')(x); },
+  "mouseover": function (d, i) {
+    var pos = $(this).offset();
+    $(tt).text(d3.time.format('%A')(d.x) + ': ' + d.y)
+      .css({top: topOffset + pos.top, left: pos.left + leftOffset})
+      .show();
+  },
+  "mouseout": function (x) {
+    $(tt).hide();
+  }
+};
+var myChart = new xChart('line-dotted', data, '#example4', opts);</code></pre>
+      </div>
+    </div>
+    <script>
+    (function () {
+      var tt = document.createElement('div'),
+  leftOffset = -(~~$('html').css('padding-left').replace('px', '') + ~~$('body').css('margin-left').replace('px', '')),
+  topOffset = -32;
+tt.className = 'ex-tooltip';
+document.body.appendChild(tt);
+
+      var data = {
+  "xScale": "time",
+  "yScale": "linear",
+  "main": [
+    {
+      "className": ".pizza",
+      "data": [
+        {
+          "x": "2012-11-05",
+          "y": 6
+        },
+        {
+          "x": "2012-11-06",
+          "y": 6
+        },
+        {
+          "x": "2012-11-07",
+          "y": 8
+        },
+        {
+          "x": "2012-11-08",
+          "y": 3
+        },
+        {
+          "x": "2012-11-09",
+          "y": 4
+        },
+        {
+          "x": "2012-11-10",
+          "y": 9
+        },
+        {
+          "x": "2012-11-11",
+          "y": 6
+        }
+      ]
+    }
+  ]
+};
+      var opts = {
+  "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+  "tickFormatX": function (x) { return d3.time.format('%A')(x); },
+  "mouseover": function (d, i) {
+    var pos = $(this).offset();
+    $(tt).text(d3.time.format('%A')(d.x) + ': ' + d.y)
+      .css({top: topOffset + pos.top, left: pos.left + leftOffset})
+      .show();
+  },
+  "mouseout": function (x) {
+    $(tt).hide();
+  }
+};
+      
+      var myChart = new xChart('line-dotted', data, '#example4', opts);
+      
+    }());
+    </script>
+  </article>
+
+  <hr>
+  
+
+  <article id="custom" class="example">
+    <h1>Example Custom Vis Type: Error Bars</h1>
+    <p>Error bars are used to represent the variability of data displayed. In this example, I'll create a custom vis type for the errors, that can be used within the <code>comp</code> data set in xCharts. For detailed documentation of methods, check out the <a href="/xcharts/docs/#custom-vis-types">Custom Vis Types Documentation</a>.</p>
+
+    <div class="row guttered">
+      <div class="span5">
+        <figure id="exampleVis"></figure>
+      </div>
+      <div class="span7">
+        <p>First, lets create our custom vis. There are many comments inline to help explain what we're doing:</p>
+        <pre><code data-language="javascript">var errorBar = {
+  enter: function (self, storage, className, data, callbacks) {
+    var insertionPoint = xChart.visutils.getInsertionPoint(9),
+      container,
+      // Map each error bar into 3 points, so it's easier to draw as a single path
+      // Converts each point to a triplet with y from (y - e) to (y + e)
+      // It would be better to use the `preUpdateScale` method here,
+      // but for this quick example, we're taking a shortcut :)
+      eData = data.map(function (d) {
+        d.data = d.data.map(function (d) {
+          return [{x: d.x, y: d.y - d.e}, {x: d.x, y: d.y}, {x: d.x, y: d.y + d.e}];
+        });
+        return d;
+      }),
+      paths;
+
+    // It's always a good idea to create containers for sets
+    container = self._g.selectAll('.errorLine' + className)
+      .data(eData, function (d) {
+        return d.className;
+      });
+
+    // The insertionPoint is a special method that helps us insert this
+    // vis at a particular z-index
+    // In this case, we've chosen the highest point (above everything else)
+    container.enter().insert('g', insertionPoint)
+      .attr('class', function (d, i) {
+        return 'errorLine' + className.replace(/\./g, ' ') +
+          ' color' + i;
+      });
+
+    // Tell each path about its data
+    // and ensure we reuse any previously drawn item
+    paths = container.selectAll('path')
+      .data(function (d) {
+        return d.data;
+      }, function (d) {
+        return d[0].x;
+      });
+
+    paths.enter().insert('path')
+      .style('opacity', 0)
+      .attr('d', d3.svg.line()
+        .x(function (d) {
+          // We offset by half the rangeBand, because this is a bar chart
+          return self.xScale(d.x) + self.xScale.rangeBand() / 2;
+        })
+        .y(function (d) { return self.yScale(d.y); })
+      );
+
+    storage.containers = container;
+    storage.paths = paths;
+  },
+  update: function (self, storage, timing) {
+    // This is mostly duplication to the d3.svg.line from the enter() method
+    storage.paths.transition().duration(timing)
+      .style('opacity', 1)
+      .attr('d', d3.svg.line()
+        .x(function (d) {
+          return self.xScale(d.x) + self.xScale.rangeBand() / 2;
+        })
+        .y(function (d) { return self.yScale(d.y); })
+      );
+  },
+  exit: function (self, storage, timing) {
+    storage.paths.exit()
+      .transition().duration(timing)
+      .style('opacity', 0);
+  },
+  destroy: function (self, storage, timing) {
+    storage.paths.transition().duration(timing)
+      .style('opacity', 0)
+      .remove();
+  }
+};</code></pre>
+
+<p>Next, we'll let <code>xChart</code> know about our new vis type:</p>
+
+<pre><code data-language="javascript">xChart.setVis('error', errorBar);</code></pre>
+
+<p>Here's the first data set that is drawn on our example. Notice how in the <code>comp</code> data set, I've added an extra key to each point: <code>e</code>, which will tell us the margin of error:</p>
+
+<pre><code data-language="javascript">var data = {
+    "xScale": "ordinal",
+    "yScale": "linear",
+    "main": [
+      {
+        "className": ".errorExample",
+        "data": [
+          {
+            "x": "Ponies",
+            "y": 12
+          },
+          {
+            "x": "Unicorns",
+            "y": 23
+          },
+          {
+            "x": "Trolls",
+            "y": 1
+          }
+        ]
+      }
+    ],
+    "comp": [
+      {
+        "type": "error",
+        "className": ".comp.errorBar",
+        "data": [
+          {
+            "x": "Ponies",
+            "y": 12,
+            "e": 5
+          },
+          {
+            "x": "Unicorns",
+            "y": 23,
+            "e": 2
+          },
+          {
+            "x": "Trolls",
+            "y": 1,
+            "e": 1
+          }
+        ]
+      }
+    ]
+  };</code></pre>
+
+  <p>Last: Create a new xChart with our data:</p>
+
+<pre><code data-language="javascript">var myChart = new xChart('bar', data, '#exampleVis');</code></pre>
+
+      </div>
+    </div>
+
+    <script>
+    (function () {
+      var errorBar = {
+        enter: function (self, storage, className, data, callbacks) {
+          var insertionPoint = xChart.visutils.getInsertionPoint(9),
+            container,
+            eData = data.map(function (d) {
+              d.data = d.data.map(function (d) {
+                return [{x: d.x, y: d.y - d.e}, {x: d.x, y: d.y}, {x: d.x, y: d.y + d.e}];
+              });
+              return d;
+            }),
+            paths;
+
+          container = self._g.selectAll('.errorLine' + className)
+            .data(eData, function (d) {
+              return d.className;
+            });
+
+          container.enter().insert('g', insertionPoint)
+            .attr('class', function (d, i) {
+              return 'errorLine' + className.replace(/\./g, ' ') + ' color' + i;
+            });
+
+          paths = container.selectAll('path')
+            .data(function (d) {
+              return d.data;
+            }, function (d) {
+              return d[0].x;
+            });
+
+          paths.enter().insert('path')
+            .style('opacity', 0)
+            .attr('d', d3.svg.line()
+              .x(function (d) {
+                return self.xScale(d.x) + self.xScale.rangeBand() / 2;
+              })
+              .y(function (d) { return self.yScale(d.y); })
+            );
+
+          storage.containers = container;
+          storage.paths = paths;
+        },
+        update: function (self, storage, timing) {
+          storage.paths.transition().duration(timing)
+            .style('opacity', 1)
+            .attr('d', d3.svg.line()
+              .x(function (d) {
+                return self.xScale(d.x) + self.xScale.rangeBand() / 2;
+              })
+              .y(function (d) { return self.yScale(d.y); })
+            );
+        },
+        exit: function (self, storage, timing) {
+          storage.paths.exit()
+            .transition().duration(timing)
+            .style('opacity', 0);
+        },
+        destroy: function (self, storage, timing) {
+          storage.paths.transition().duration(timing)
+            .style('opacity', 0)
+            .remove();
+        }
+      };
+
+      xChart.setVis('error', errorBar);
+
+      var data = [{
+          "xScale": "ordinal",
+          "yScale": "linear",
+          "main": [
+            {
+              "className": ".errorExample",
+              "data": [
+                {
+                  "x": "Ponies",
+                  "y": 12
+                },
+                {
+                  "x": "Unicorns",
+                  "y": 23
+                },
+                {
+                  "x": "Trolls",
+                  "y": 1
+                }
+              ]
+            }
+          ],
+          "comp": [
+            {
+              "type": "error",
+              "className": ".comp.errorBar",
+              "data": [
+                {
+                  "x": "Ponies",
+                  "y": 12,
+                  "e": 5
+                },
+                {
+                  "x": "Unicorns",
+                  "y": 23,
+                  "e": 2
+                },
+                {
+                  "x": "Trolls",
+                  "y": 1,
+                  "e": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "xScale": "ordinal",
+          "yScale": "linear",
+          "main": [
+            {
+              "className": ".errorExample",
+              "data": [
+                {
+                  "x": "Ponies",
+                  "y": 76
+                },
+                {
+                  "x": "Unicorns",
+                  "y": 45
+                },
+                {
+                  "x": "Trolls",
+                  "y": 82
+                }
+              ]
+            }
+          ],
+          "comp": [
+            {
+              "type": "error",
+              "className": ".comp.errorBar",
+              "data": [
+                {
+                  "x": "Ponies",
+                  "y": 76,
+                  "e": 12
+                },
+                {
+                  "x": "Unicorns",
+                  "y": 45,
+                  "e": 3
+                },
+                {
+                  "x": "Trolls",
+                  "y": 82,
+                  "e": 12
+                }
+              ]
+            }
+          ]
+        }
+      ];
+
+      var myChart = new xChart('bar', data[0], '#exampleVis'),
+        i = 0;
+
+      function timer() {
+        setTimeout(function () {
+          timer();
+          i += 1;
+          myChart.setData(data[i % 2]);
+        }, 3000);
+      }
+      timer();
+    }());
+    </script>
+  </article>
+</section>
+
+
+<footer>
+  <p>Copyright &copy;2012 <a href="https://www.tenxer.com">tenXer, Inc.</a></p>
+</footer>
+
+
+ 
+</body>
+</html>

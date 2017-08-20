@@ -1,0 +1,127 @@
+
+ 
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <!--[if IE]>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <![endif]-->
+  <title>xCharts » Examples</title>
+  
+ 
+ 
+
+ 
+
+<link rel="stylesheet" href="../static/xcharts/master.css">
+
+
+
+
+  <style>
+  .xchart .errorLine path {
+    stroke: #C6080D;
+    stroke-width: 3px;
+  }
+  </style>
+
+ 
+<script src="../static/d3/d3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="../static/xcharts/xcharts.min.js"></script>
+<script src="../static/xcharts/rainbow.min.js"></script>
+
+</head>
+<body class="">
+<section>
+  
+  <article class="example">
+    <h1>Interacting With Points</h1>
+    <p>Mouse over the points on the chart to see tooltips.</p>
+    <div class="row guttered">
+      <div class="span5">
+        <figure id="example4"></figure>
+      </div>
+     
+    </div>
+    <script>
+    (function () {
+      var tt = document.createElement('div'),
+  leftOffset = -(~~$('html').css('padding-left').replace('px', '') + ~~$('body').css('margin-left').replace('px', '')),
+  topOffset = -32;
+tt.className = 'ex-tooltip';
+document.body.appendChild(tt);
+
+      var data = {
+  "xScale": "time",
+  "yScale": "linear",
+  "main": [
+    {
+      "className": ".pizza",
+      "data": [
+        {
+          "x": "2012-11-05",
+          "y": 6
+        },
+        {
+          "x": "2012-11-06",
+          "y": 6
+        },
+        {
+          "x": "2012-11-07",
+          "y": 8
+        },
+        {
+          "x": "2012-11-08",
+          "y": 3
+        },
+        {
+          "x": "2012-11-09",
+          "y": 4
+        },
+        {
+          "x": "2012-11-10",
+          "y": 9
+        },
+        {
+          "x": "2012-11-11",
+          "y": 6
+        }
+      ]
+    }
+  ]
+};
+      var opts = {
+  "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+  "tickFormatX": function (x) { return d3.time.format('%A')(x); },
+  "mouseover": function (d, i) {
+    var pos = $(this).offset();
+    $(tt).text(d3.time.format('%A')(d.x) + ': ' + d.y)
+      .css({top: topOffset + pos.top, left: pos.left + leftOffset})
+      .show();
+  },
+  "mouseout": function (x) {
+    $(tt).hide();
+  }
+};
+      
+      var myChart = new xChart('line-dotted', data, '#example4', opts);
+      
+    }());
+    </script>
+  </article>
+
+ 
+</section>
+
+
+<footer>
+  <p>Copyright &copy;2012 <a href="https://www.tenxer.com">tenXer, Inc.</a></p>
+</footer>
+
+
+ 
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta lang="ko">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>index</title>
+
+    <!-- Bootstrap -->
+    <link href="../static/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../static/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../static/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="../static/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../static/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../static/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- xChart -->
+    <link href="../static/xcharts/xcharts.min.css" rel="stylesheet">
+
+    <!-- default -->
+    <link href="../static/default/css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../static/custom/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>{{ company_name }}</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile">
+              <div class="profile_pic">
+                <img src="{{ user_profile_data.profile_img }}" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>{{ user_profile_data.name }}</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="/">Dashboard</a></li>
+                      <li><a href="/V02">Dashboard2</a></li>
+                      <li><a href="/V01">Dashboard3</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ user_profile_data.profile_img }}" alt="">{{ user_profile_data.name }}
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">Help</a></li>
+                    <li><a href="/login"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">{{ msg_list|length }}</span>
+                  </a>
+
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    {% for item in msg_list %}
+                      <li>
+                        <a>
+                          <span class="image"><img src="../static/default/images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>{{ item.sender }}</span>
+                            <span class="time">{{ item.past_time }} mins ago</span>
+                          </span>
+                          <span class="message">
+                            {{ item.msg|truncate(77, end = "...")}}
+                          </span>
+                        </a>
+                      </li>
+                    {% endfor %}
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+            {% for item in topPage_increasement_list %}
+              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                <span class="count_top"><i class="fa fa-user"></i> {{ item.topic_title }}</span><!-- fa-user / fa-clock-o -->
+                <div class="count">{{ item.topic_count }}</div>
+                <span class="count_bottom">
+                {% if item.increase_percent > 0 %}
+                  <i class="green"><i class="fa fa-sort-asc"></i>{{ item.increase_percent }}% </i>
+                {% elif item.increase_percent == 0 %}
+                  <i class="green">{{ item.increase_percent }}% </i>
+                {% else %}
+                  <i class="red"><i class="fa fa-sort-desc"></i>{{ item.increase_percent }}% </i>
+                {% endif %}
+                  From Yesterday</span>
+              </div>
+            {% endfor %}
+          </div>
+          <!-- /top tiles -->
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="dashboard_graph">
+
+                <!--  Line Graph -->
+                <div class="row x_title">
+                  <div class="col-md-6">
+                    <h3>{{ line_graph.title }} <small>{{ line_graph.sub_title }}</small></h3>
+                  </div>
+                  <div class="col-md-6">
+                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                      <span>wait...</span> <b class="caret"></b>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-9 col-sm-9 col-xs-12">
+
+                  <!-- Flot -->
+                  <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
+                  <div style="width: 100%;">
+                    <div id="canvas_dahs" class="demo-placeholder" style="width: 100%; height:270px;"></div>
+                  </div>
+
+                  <!-- xChart -->
+                  {# <div style="width: 100%;">
+                    <figure style="width: 100%; height:270px;" id="myChart">
+                    </figure>
+                  </div> #}
+                   
+                </div>
+                <!-- /Line Graph-->
+
+                <!-- Progress Bar -->
+                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                  <div class="x_title">
+                    <h2>{{ progressbar.title }}</h2>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="col-md-12 col-sm-12 col-xs-6">
+                    {% for item in progressbar.main %}
+                      <div>
+                        <p>{{ item.topic_title }}</p>
+                        <div class="">
+                          <div class="progress progress_sm" style="width: 76%;">
+                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal= "{{ item.topic_percent }}"></div>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <!-- /Progress Bar -->
+                </div>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+          </div>
+          <br />
+
+          <div class="row">
+
+          <!-- Progress Bar2-->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>{{ progressbar2.title }}</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <h4>{{ progressbar2.sub_title }}</h4>
+
+
+                  {% for item in progressbar2.main %}
+                    <div class="widget_summary">
+                      <div class="w_left w_25">
+                        <span>{{ item.topic_title }}</span>
+                      </div>
+                      <div class="w_center w_55">
+                        <div class="progress">
+                          <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ item.topic_num / progressbar2.total * 100 }}%;">
+                            <span class="sr-only">60% Complete</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="w_right w_20">
+                        <span>{{ item.topic_num }}{{ progressbar2.unit }}</span>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <!-- /Progress Bar2-->
+
+            <!-- Doughnut Chart -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title">
+                  <h2>{{ doughnut_chart.title }}</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <table class="" style="width:100%">
+                    <tr>
+                      <th style="width:37%;">
+                        <p>Top 5</p>
+                      </th>
+                      <th>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                          <p class="">{{ doughnut_chart.th.topic }}</p> <!-- col1-->
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                          <p class="">{{ doughnut_chart.th.value }}</p> <!-- col2-->
+                        </div>
+                      </th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                      </td>
+                      <td>
+                        <table class="tile_info">
+                          {% for item in doughnut_chart.main %}
+                           <tr>
+                              <td>
+                                <p><i class="fa fa-square {{ item.color }}"></i>{{ item.topic_title }}</p>
+                              </td>
+                              <td>{{ item.topic_percent }}%</td>
+                            </tr>
+                          {% endfor %}
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- /Doughnut Chart -->
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>Quick Settings</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="dashboard-widget-content">
+                    <ul class="quick-list">
+                      <li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
+                      </li>
+                      <li><i class="fa fa-bars"></i><a href="#">Subscription</a>
+                      </li>
+                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
+                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
+                      </li>
+                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
+                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
+                      </li>
+                      <li><i class="fa fa-area-chart"></i><a href="#">Logout</a>
+                      </li>
+                    </ul>
+
+                    <!-- <div class="sidebar-widget">
+                      <h4>Profile Completion</h4>
+                      <canvas width="150" height="80" id="foo" class="" style="width: 160px; height: 100px;"></canvas>
+                      <div class="goal-wrapper">
+                        <span class="gauge-value pull-left">$</span>
+                        <span id="gauge-text" class="gauge-value pull-left">3,200</span>
+                        <span id="goal-text" class="goal-value pull-right">$5,000</span>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+         <!--  <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div> -->
+          <!-- <div class="clearfix"></div> -->
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../static/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../static/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../static/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../static/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../static/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="../static/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../static/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../static/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../static/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../static/Flot/jquery.flot.js"></script>
+    <script src="../static/Flot/jquery.flot.pie.js"></script>
+    <script src="../static/Flot/jquery.flot.time.js"></script>
+    <script src="../static/Flot/jquery.flot.stack.js"></script>
+    <script src="../static/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../static/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../static/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../static/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../static/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../static/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../static/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../static/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../static/moment/min/moment.min.js"></script>
+    <script src="../static/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- d3 -->
+    <script src="../static/d3/d3.min.js"></script>
+    <!-- xChart -->
+    <script src="../static/xcharts/xcharts.min.js"></script>
+
+    <!-- default -->
+    <script src="../static/default/js/datepicker/daterangepicker.js"></script>
+    <script src="../static/default/js/moment/moment.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../static/custom/js/custom.min.js"></script>
+
+    <!-- xCharts -->
+    {# <script>
+      var data = {
+        "xScale": "time",
+        "yScale": "linear",
+        "type": "line",
+        "main": [
+          {
+            "className": ".calorie",
+            "data": [
+              {
+                "x": {{ calorie_data_one_week[0]["date"]|string|truncate(10,end = '') }},
+                "y": {{ calorie_data_one_week[0]["count"] }}
+              },
+              {
+                "x": {{ calorie_data_one_week[1]["date"]|string|truncate(10,end = '') }},
+                "y": {{ calorie_data_one_week[1]["count"] }}
+              },
+              {
+                "x": {{ calorie_data_one_week[2]["date"]|string|truncate(10,end = '') }},
+                "y": {{ calorie_data_one_week[2]["count"] }}
+              },
+              {
+                "x": {{ calorie_data_one_week[3]["date"]|string|truncate(10,end = '') }},
+                "y": {{ calorie_data_one_week[3]["count"] }}
+              },
+              {
+                "x": {{ calorie_data_one_week[4]["date"]|string|truncate(10,end = '') }},
+                "y": {{ calorie_data_one_week[4]["count"] }}
+              },
+              {
+                "x": {{ calorie_data_one_week[5]["date"]|string|truncate(10,end = '') }},
+                "y": {{ calorie_data_one_week[5]["count"] }}
+              },
+              {
+                "x": {{ calorie_data_one_week[6]["date"]|string|truncate(10,end = '') }},
+                "y": {{ calorie_data_one_week[6]["count"] }}
+              }
+            ]
+          }
+        ]
+      };
+      var opts = {
+        "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+        "tickFormatX": function (x) { return d3.time.format('%A')(x); }
+      };
+      var myChart = new xChart('line', data, '#myChart', opts);
+    </script> #}
+    <!-- /xCharts -->
+
+    <!-- Flot -->
+    <script>
+      $(document).ready(function() {
+        var calorie_list = [];
+        var exercise_time_list = [];
+        {% for item in line_graph.topic.calorie_data_one_week %}
+          calorie_list.push([gd({{ item.date.year }}, {{ item.date.month }}, {{ item.date.day }}), {{ item.count }}]);
+        {% endfor %}
+
+        {% for item in line_graph.topic.exercise_time_one_week %}
+          exercise_time_list.push([gd({{ item.date.year }}, {{ item.date.month }}, {{ item.date.day }}), {{ item.time }}]);
+        {% endfor %}
+        var calorie = calorie_list;
+        var exercise_time = exercise_time_list;
+        console.log(calorie_list);
+
+        $("#canvas_dahs").length && $.plot($("#canvas_dahs"), [
+          calorie, exercise_time
+        ], {
+          series: {
+            lines: {
+              show: false,
+              fill: true
+            },
+            splines: {
+              show: true,
+              tension: 0.4,
+              lineWidth: 1,
+              fill: 0.4
+            },
+            points: {
+              radius: 0,
+              show: true
+            },
+            shadowSize: 2
+          },
+          grid: {
+            verticalLines: true,
+            hoverable: true,
+            clickable: true,
+            tickColor: "#d5d5d5",
+            borderWidth: 1,
+            color: '#fff'
+          },
+          colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
+          xaxis: {
+            tickColor: "rgba(51, 51, 51, 0.06)",
+            mode: "time",
+            tickSize: [1, "day"],
+            // tickLength: 10,
+            axisLabel: "Date",
+            axisLabelUseCanvas: true,
+            axisLabelFontSizePixels: 12,
+            axisLabelFontFamily: 'Verdana, Arial',
+            axisLabelPadding: 10
+          },
+          yaxis: {
+            ticks: 8,
+            tickColor: "rgba(51, 51, 51, 0.06)",
+          },
+          tooltip: false
+        });
+
+        function gd1(python_datetime_format) {
+          a = python_datetime_format.year.toString();
+          return new Date(a.concat(python_datetime_format.year.toString(),",",(python_datetime_format.month-1).toString(),",",python_datetime_format.day.toString())).getTime();
+        }
+        function gd(year, month, day) {
+          return new Date(year, month - 1, day).getTime();
+        }
+      });
+    </script>
+    <!-- /Flot -->
+
+    <!-- JQVMap -->
+    <script>
+      $(document).ready(function(){
+        $('#world-map-gdp').vectorMap({
+            map: 'world_en',
+            backgroundColor: null,
+            color: '#ffffff',
+            hoverOpacity: 0.7,
+            selectedColor: '#666666',
+            enableZoom: true,
+            showTooltip: true,
+            values: sample_data,
+            scaleColors: ['#E6F2F0', '#149B7E'],
+            normalizeFunction: 'polynomial'
+        });
+      });
+    </script>
+    <!-- /JQVMap -->
+
+    <!-- Skycons -->
+    <script>
+      $(document).ready(function() {
+        var icons = new Skycons({
+            "color": "#73879C"
+          }),
+          list = [
+            "clear-day", "clear-night", "partly-cloudy-day",
+            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+            "fog"
+          ],
+          i;
+
+        for (i = list.length; i--;)
+          icons.set(list[i], list[i]);
+
+        icons.play();
+      });
+    </script>
+    <!-- /Skycons -->
+
+    <!-- Doughnut Chart -->
+    <script>
+      $(document).ready(function(){
+        var options = {
+          legend: false,
+          responsive: false
+        };
+        var label_list = [];
+        var data_list = [];
+        var color_list = [];
+        var hover_color_list = [];
+        {% for item in doughnut_chart.main %}
+          label_list.push("{{ item.topic_title }}");
+          data_list.push("{{ item.topic_percent }}");
+        {% endfor %}
+
+        new Chart(document.getElementById("canvas1"), {
+          type: 'doughnut',
+          tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+          data: {
+            labels: label_list,
+            datasets: [{
+              data: data_list,
+              backgroundColor: [
+                "#26B99A",
+                "#3498DB",
+                "#E74C3C",
+                "#9B59B6",
+                "#BDC3C7"
+              ],
+              hoverBackgroundColor: [
+                "#36CAAB",
+                "#49A9EA",
+                "#E95E4F",
+                "#B370CF",
+                "#CFD4D8"
+              ]
+            }]
+          },
+          options: options
+        });
+      });
+    </script>
+    <!-- /Doughnut Chart -->
+    
+    <!-- bootstrap-daterangepicker -->
+    <script>
+      $(document).ready(function() {
+
+        var cb = function(start, end, label) {
+          console.log(start.toISOString(), end.toISOString(), label);
+          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        };
+
+        var optionSet1 = {
+          startDate: moment().subtract(29, 'days'),
+          endDate: moment(),
+          minDate: '01/01/2012',
+          maxDate: '12/31/2015',
+          dateLimit: {
+            days: 60
+          },
+          showDropdowns: true,
+          showWeekNumbers: true,
+          timePicker: false,
+          timePickerIncrement: 1,
+          timePicker12Hour: true,
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          },
+          opens: 'left',
+          buttonClasses: ['btn btn-default'],
+          applyClass: 'btn-small btn-primary',
+          cancelClass: 'btn-small',
+          format: 'MM/DD/YYYY',
+          separator: ' to ',
+          locale: {
+            applyLabel: 'Submit',
+            cancelLabel: 'Clear',
+            fromLabel: 'From',
+            toLabel: 'To',
+            customRangeLabel: 'Custom',
+            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            firstDay: 1
+          }
+        };
+        $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+        $('#reportrange').daterangepicker(optionSet1, cb);
+        $('#reportrange').on('show.daterangepicker', function() {
+          console.log("show event fired");
+        });
+        $('#reportrange').on('hide.daterangepicker', function() {
+          console.log("hide event fired");
+        });
+        $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
+          console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
+        });
+        $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
+          console.log("cancel event fired");
+        });
+        $('#options1').click(function() {
+          $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
+        });
+        $('#options2').click(function() {
+          $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
+        });
+        $('#destroy').click(function() {
+          $('#reportrange').data('daterangepicker').remove();
+        });
+      });
+    </script>
+    <!-- /bootstrap-daterangepicker -->
+
+    <!-- gauge.js -->
+    <script>
+      var opts = {
+          lines: 12,
+          angle: 0,
+          lineWidth: 0.4,
+          pointer: {
+              length: 0.75,
+              strokeWidth: 0.042,
+              color: '#1D212A'
+          },
+          limitMax: 'false',
+          colorStart: '#1ABC9C',
+          colorStop: '#1ABC9C',
+          strokeColor: '#F0F3F3',
+          generateGradient: true
+      };
+      var target = document.getElementById('foo'),
+          gauge = new Gauge(target).setOptions(opts);
+
+      gauge.maxValue = 6000;
+      gauge.animationSpeed = 32;
+      gauge.set(3200);
+      gauge.setTextField(document.getElementById("gauge-text"));
+    </script>
+    <!-- /gauge.js -->
+  </body>
+</html>

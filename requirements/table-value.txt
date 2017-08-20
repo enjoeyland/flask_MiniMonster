@@ -1,0 +1,17 @@
+device_table = {
+	title:,
+	sub_title:,
+	col_title_list:[],
+	raw_items_list:[
+		raw_item_list :[]
+	],
+}
+
+user_table = {
+	title:,
+	sub_title:,
+	col_title_list:[],
+	raw_items_list:[
+		raw_item_list :[]
+	],
+}
